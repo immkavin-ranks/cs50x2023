@@ -1,0 +1,3 @@
+I will characterize their aura by danceability, speechiness, valence.
+
+Comparing these properties of individual listener, we can define their aura.

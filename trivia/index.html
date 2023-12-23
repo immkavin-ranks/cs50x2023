@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+            const correctAnswer1 = "Posidonia australis seagrass (Poseidon's ribbon weed)";
+
+            // Function to check answer and update button color and feedback message
+            function checkAnswer1() {
+                const chosenAnswer = event.target.value;
+                const button = event.target;
+                const p = document.querySelector('.feedback1');
+
+                if (chosenAnswer === correctAnswer1) {
+                    button.style.backgroundColor = "green";
+                    p.innerHTML = "Correct!";
+                } else {
+                    button.style.backgroundColor = "red";
+                    p.innerHTML = "Incorrect";
+                }
+            }
+
+            const correctAnswer2 = "cheetah";
+
+            function checkAnswer2() {
+                const typedAnswer = document.querySelector('.free-response');
+                const p = document.querySelector('.feedback2');
+
+                if (typedAnswer.value.toLowerCase() === correctAnswer2.toLowerCase()) {
+                    typedAnswer.style.backgroundColor = "green";
+                    p.innerHTML = "Correct!";
+                } else {
+                    typedAnswer.style.backgroundColor = "red";
+                    p.innerHTML = "Incorrect";
+                }
+            }
+        </script>
+    </head>
+
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+                <h3>What is the largest living organism on Earth?</h3>
+                <p class="feedback1"></p>
+                <button onclick=checkAnswer1() value="Blue whale">Blue whale</button>
+                <button onclick=checkAnswer1() value="Giant sequoia">Giant sequoia</button>
+                <button onclick=checkAnswer1() value="Humongous Fungus">Humongous Fungus</button>
+                <button onclick=checkAnswer1() value="Posidonia australis seagrass (Poseidon's ribbon weed)">
+                    Posidonia australis seagrass (Poseidon's ribbon weed)
+                </button>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+                <h3>Which animal is known for being the fastest land mammal?</h3>
+                <p class="feedback2"></p>
+                <input type="text" class="free-response">
+                <button onclick="checkAnswer2()">Check Answer</button>
+            </div>
+        </div>
+    </body>
+
+</html>

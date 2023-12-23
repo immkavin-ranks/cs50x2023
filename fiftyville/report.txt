@@ -1,0 +1,89 @@
+    suspects
+10:min     license         activity   name      phone
+| 16     | 5P2BI95       | exit     |Vanessa  (725) 555-4692
+| 18     | 94KL13X       | exit     |Bruce    (367) 555-5533    *
+| 18     | 6P58WS2       | exit     |Barry    (301) 555-4174
+| 19     | 4328GD8       | exit     |Luca     (389) 555-5198
+| 20     | G412CB7       | exit     |Sofia    (130) 555-0289    *
+| 21     | L93JTIZ       | exit     |Iman     (829) 555-5269
+| 23     | 322W7JE       | exit     |Diana    (770) 555-1861
+| 23     | 0NTHK55       | exit     |Kelsey   (499) 555-9472    *
+
+    airport -> 29/07/2021
+    sqlite> select id, origin_airport_id, destination_airport_id, hour, minute from flights where year = 2021 and month = 7 and day =
+   ...> 29 order by hour;
++----+-------------------+------------------------+------+--------+
+| id | origin_airport_id | destination_airport_id | hour | minute |
++----+-------------------+------------------------+------+--------+
+| 36 | 8                 | 4                      | 8    | 20     |
+| 43 | 8                 | 1                      | 9    | 30     |
+| 23 | 8                 | 11                     | 12   | 15     |
+| 53 | 8                 | 9                      | 15   | 20     |
+| 18 | 8                 | 6                      | 16   | 0      |
++----+-------------------+------------------------+------+--------+
+
+sqlite> select city from airports where id = 4;
++---------------+
+|     city      |
++---------------+
+| New York City |
++---------------+
+
+    transcript
+| “Ah,” said he, “I forgot that I had not seen you for some weeks. It is a little souvenir from the King of Bohemia in return for my assistance in the case of the Irene Adler papers.”                                                                                                                               |
+| “I suppose,” said Holmes, “that when Mr. Windibank came back from France he was very annoyed at your having gone to the ball.”                                                                                                                                                                                      |
+| “You had my note?” he asked with a deep harsh voice and a strongly marked German accent. “I told you that I would call.” He looked from one to the other of us, as if uncertain which to address.                                                                                                                   |
+| Sometime within ten minutes of the theft, I saw the thief get into a car in the bakery parking lot and drive away. If you have security footage from the bakery parking lot, you might want to look for cars that left the parking lot in that time frame.                                                          |
+| I don't know the thief's name, but it was someone I recognized. Earlier this morning, before I arrived at Emma's bakery, I was walking by the ATM on Leggett Street and saw the thief there withdrawing some money.                                                                                                 |
+| As the thief was leaving the bakery, they called someone who talked to them for less than a minute. In the call, I heard the thief say that they were planning to take the earliest flight out of Fiftyville tomorrow. The thief then asked the person on the other end of the phone to purchase the flight ticket. |
+| Our neighboring courthouse has a very annoying rooster that crows loudly at 6am every day. My sons Robert and Patrick took the rooster to a city far, far away, so it may never bother us again. My sons have successfully arrived in Paris.                                                                        |
++------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+sqlite> select name,license_plate,phone_number from people join passengers, flights on passengers.passport_number = people.passport_number and flights.id = p
+assengers.flight_id where year = 2021 and month = 7 and day = 29 and flight_id = 36;
++--------+---------------+----------------+
+|  name  | license_plate |  phone_number  |
++--------+---------------+----------------+
+| Doris  | M51FA04       | (066) 555-9701 |
+| Sofia  | G412CB7       | (130) 555-0289 |
+| Bruce  | 94KL13X       | (367) 555-5533 |
+| Edward | 130LD9Z       | (328) 555-1152 |
+| Kelsey | 0NTHK55       | (499) 555-9472 |
+| Taylor | 1106N58       | (286) 555-6063 |
+| Kenny  | 30G67EN       | (826) 555-1652 |
+| Luca   | 4328GD8       | (389) 555-5198 |
++--------+---------------+----------------+
+
++----------------+----------------+----------+
+|     caller     |    receiver    | duration | caller_name receiver
++----------------+----------------+----------+
+| (499) 555-9472 | (892) 555-8872 | 36       |Kelsey
+| (031) 555-6622 | (910) 555-3251 | 38       |Carina
+| (286) 555-6063 | (676) 555-6554 | 43       |Taylor
+| (367) 555-5533 | (375) 555-8161 | 45       |Bruce ***     Robin
+| (770) 555-1861 | (725) 555-3243 | 49       |Diana
+| (499) 555-9472 | (717) 555-1342 | 50       |Kelsey *
+| (130) 555-0289 | (996) 555-8899 | 51       |Sofia *
+| (338) 555-6650 | (704) 555-2131 | 54       |Benista
+| (826) 555-1652 | (066) 555-9701 | 55       |Kenny
+| (609) 555-5876 | (389) 555-5198 | 60       |Kathryn
++----------------+----------------+----------+
+
+Bruce   THIEF
+Sofia
+Diana
+Kelsey
+
+
++---------+------------------+
+|  name   | transaction_type |
++---------+------------------+
+| Bruce   | withdraw         |  *** Confirmed
+| Diana   | withdraw         |
+| Brooke  | withdraw         |
+| Kenny   | withdraw         |
+| Iman    | withdraw         |
+| Luca    | withdraw         |
+| Taylor  | withdraw         |
+| Benista | withdraw         |
++---------+------------------+

@@ -1,0 +1,20 @@
+.contact {
+    text-align: center;
+}
+
+#linkedin {
+    color: white;
+    padding: 12px;
+}
+
+body {
+    background-color: #AFC8AD;
+}
+
+#footer > span {
+    font-size: small;
+}
+
+html body {
+    color: #333333;
+}
